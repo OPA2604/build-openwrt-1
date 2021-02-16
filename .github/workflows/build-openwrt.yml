@@ -1,8 +1,8 @@
-name: Build-OpenWrt
+name: Build-OpenWrt acrh17
 
-on:
-  repository_dispatch:
-  workflow_dispatch:
+on: 
+  release:
+    types: [published]
     
 jobs:
   build:
