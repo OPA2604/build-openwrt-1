@@ -3,6 +3,11 @@ name: Build-OpenWrt
 on:
   repository_dispatch:
   workflow_dispatch:
+    inputs:
+      ssh:
+        description: 'SSH connection to Actions'
+        required: true
+        default: 'true'
 
 jobs:
   build:
@@ -38,8 +43,8 @@ jobs:
         /bin/bash ${GITHUB_WORKSPACE}/before_build.sh
         cp -fpR ${GITHUB_WORKSPACE}/. /home/runner/openwrt/
 
-#    - name: SSH connection to Actions
-#      uses: csexton/debugger-action@master
+    - name: SSH connection to Actions
+      uses: csexton/debugger-action@master
 
     - name: Start Build
       run: | 
